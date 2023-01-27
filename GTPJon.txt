@@ -21,7 +21,7 @@ function onOpen() {
 
 
 // FIXED VARIABLES. Your API and Model Type
-var apiKey = "";
+var apiKey = "PUTYOURAPIKEYHERE";
 var model = "text-davinci-003"
 // ****END VARIABLES****
 
