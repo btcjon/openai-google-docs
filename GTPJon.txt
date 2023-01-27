@@ -1,0 +1,464 @@
+// DROP DOWN MENU
+function onOpen() {
+ DocumentApp.getUi().createMenu("GPT3 Writing by Jon")
+ .addItem("Generate Ideas", "generateIdeas")
+ .addItem("Generate Compelling Titles", "generateTitles")
+ .addItem("Generate Into", "generateIntro")
+ .addItem("Generate Outline", "generateOutline")
+ .addItem("Rewrite Better", "generateBetter")
+ .addItem("Rewrite for an 8 Year Old", "generateChild")
+ .addItem("Rewrite Technical", "generateTechnical")
+ .addItem("Rewrite Concise", "generateConcise")
+ .addItem("Rewrite Expand", "generateExpand")
+ .addItem("Get Stats and Facts", "generateStats")
+ .addItem("Summarize in Bullets", "generateSummaryBullets")
+ .addItem("Ask Me Anything", "generateAMA")
+ .addItem("Ask Me Anything Creative", "generateAMAcreative")
+ .addItem("Generate Image", "generateImage")
+  .addToUi();
+}
+// ****END MENU****
+
+
+// FIXED VARIABLES. Your API and Model Type
+var apiKey = "";
+var model = "text-davinci-003"
+// ****END VARIABLES****
+
+
+// GENERATE PROMPT
+function generateIdeas() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "Generate 5 blog ideas around the word or phrase " + selectedText;
+temperature= 0.2
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+
+// GENERATE PROMPT
+function generateTitles() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "Generate 5 headlines that are compelling and make viewer want to click around the word or phrase" + selectedText;
+temperature= 0.2
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+
+// GENERATE PROMPT
+function generateIntro() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "Generate 2 blog introductions around the word or phrase" + selectedText;
+temperature= 0.2
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+
+// GENERATE PROMPT
+function generateOutline() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "Generate a detailed outline around the word or phrase" + selectedText;
+temperature= 0.2
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+
+
+
+// GENERATE PROMPT
+function generateBetter() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "rewrite this to be more Clear, concise, effective, organized, engaging, audience-tailored" + selectedText;
+temperature= 0.2
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+
+
+// GENERATE PROMPT
+function generateChild() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "rewrite this as if you are speaking to a 8 year old" + selectedText;
+temperature= 0.2
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+
+
+// GENERATE PROMPT
+function generateTechnical() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "rewrite this and expand with a technical tone" + selectedText;
+temperature= 0.2
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+// GENERATE PROMPT
+function generateConcise() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "rewrite this in a more concise way" + selectedText;
+temperature= 0.2
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+
+// GENERATE PROMPT
+function generateExpand() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "expand on this" + selectedText;
+temperature= 0.2
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+
+// GENERATE PROMPT
+function generateStats() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "get me 3 relevant statistics and/or facts with references" + selectedText;
+temperature= 0
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+
+// GENERATE PROMPT
+function generateAMA() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "" + selectedText;
+temperature= 0.2
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+// GENERATE PROMPT
+function generateAMAcreative() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "" + selectedText;
+temperature= 0.7
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+
+
+
+// GENERATE PROMPT
+function generateSummaryBullets() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "summarize in 5 bullet points or less" + selectedText;
+temperature= 0.7
+maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+
+
+// GENERATE IMAGE - SIZE CAN BE 256x256', '512x512', '1024x1024
+function generateImage() {
+var doc = DocumentApp.getActiveDocument()
+ var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+ var body = doc.getBody()
+ temperature= 0
+ maxTokens = 2000
+var prompt2 = "Generate images for " + selectedText;
+   const requestBody2 = {
+     "prompt": prompt2,
+     "n": 1,
+     "size": "512x512"
+   };
+   const requestOptions2 = {
+     "method": "POST",
+     "headers": {
+       "Content-Type": "application/json",
+       "Authorization": "Bearer "+apiKey
+     },
+     "payload": JSON.stringify(requestBody2)
+   }
+ const response2 = UrlFetchApp.fetch("https://api.openai.com/v1/images/generations", requestOptions2);
+ var responseText = response2.getContentText();
+ var json = JSON.parse(responseText);
+ var url1=json['data'][0]['url']
+ body.appendImage(UrlFetchApp.fetch(url1).getBlob());
+}
+// ****END IMAGE****
