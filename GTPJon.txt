@@ -1,7 +1,8 @@
 // DROP DOWN MENU
 function onOpen() {
- DocumentApp.getUi().createMenu("GPT3 Writing by Jon")
+ DocumentApp.getUi().createMenu("GPT3 Writer")
  .addItem("Generate Ideas", "generateIdeas")
+ .addItem("Generate Article", "generateArticle")
  .addItem("Generate Compelling Titles", "generateTitles")
  .addItem("Generate Outline", "generateOutline")
  .addItem("Generate Intro", "generateIntro")
@@ -36,6 +37,37 @@ var body = doc.getBody()
 var prompt = "Generate 5 unique, compelling, and interesting blog ideas around the word or phrase " + selectedText;
 temperature= 0.5
 maxTokens = 2060
+  const requestBody = {
+    "model": model,
+    "prompt": prompt,
+    "temperature": temperature,
+    "max_tokens": maxTokens,
+  };
+  const requestOptions = {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+apiKey
+    },
+    "payload": JSON.stringify(requestBody)
+  }
+const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions);
+var responseText = response.getContentText();
+var json = JSON.parse(responseText);
+Logger.log(json['choices'][0]['text'])
+para = body.appendParagraph(json['choices'][0]['text'])
+}
+// ****END PROMPT****
+
+
+// GENERATE PROMPT
+function generateArticle() {
+var doc = DocumentApp.getActiveDocument()
+var selectedText = doc.getSelection().getRangeElements()[0].getElement().asText().getText()
+var body = doc.getBody()
+var prompt = "Generate a detailed full length article with statistics and/or facts along with references about " + selectedText;
+temperature= 0.3
+maxTokens = 4000
   const requestBody = {
     "model": model,
     "prompt": prompt,
