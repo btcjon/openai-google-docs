@@ -5,11 +5,11 @@ OpenAI integrated into Google Docs for writing
 
 Be sure to sign up and generate secret API key from openai.com
 
-Download the txt file and unzip
+Tap the "code" button on this page to download the zip file and unzip to reveal the txt file
 
 Open in text editor
 
-copy All
+copy All text
 
 Open a new google doc
 
