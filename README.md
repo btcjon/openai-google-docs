@@ -31,6 +31,8 @@ go back to google doc and refresh
 
 you should see a new menu item.
 
+Write some text...  highlight and then choose your command from the menu
+
 Get to writing and have fun!
 
 I plan on making tweaks and updates
