@@ -39,4 +39,6 @@ I plan on making tweaks and updates
 
 Check back here to get new versions.
 
+*** For new docs...  simply "copy" your current doc and remove text
+
 
